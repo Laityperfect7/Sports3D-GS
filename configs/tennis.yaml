@@ -1,0 +1,46 @@
+# Tennis-specific configuration / 网球场景配置
+# Serve / rally scenario / 发球/对打场景
+
+dataset:
+  name: "tennis"
+  video_path: "demo/tennis_serve.mp4"
+  frame_dir: "output/tennis/frames"
+  depth_dir: "output/tennis/depth"
+  resolution: [1280, 720]
+  num_frames: 200
+  train_split: 0.9
+  white_background: false
+
+depth:
+  model: "depth-anything-v2"
+  checkpoint: "vitl"
+  device: "cuda"
+  max_depth: 40.0   # Tennis court / 网球场
+
+camera:
+  fx: 1200.0
+  fy: 1200.0
+  cx: 640.0
+  cy: 360.0
+  estimate_focal: true
+
+gaussian:
+  num_init: 50000
+  sh_degree: 3
+  percent_dense: 0.01
+
+train:
+  iterations: 30000
+  densify_until: 15000
+  opacity_reset_interval: 3000
+  save_interval: 5000
+  eval_interval: 1000
+
+loss:
+  lambda_l1: 0.8
+  lambda_ssim: 0.2
+
+render:
+  near_clip: 0.01
+  far_clip: 60.0
+  fov: 58.0

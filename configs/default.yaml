@@ -1,0 +1,78 @@
+# ============================================================
+# Default Configuration for Sports3D-GS / 默认配置文件
+# ============================================================
+
+# --- Dataset / 数据集 ---
+dataset:
+  name: "sports3d"
+  video_path: "demo/sample_video.mp4"       # Input video path / 输入视频路径
+  frame_dir: "output/frames"                 # Extracted frames dir / 提取帧目录
+  depth_dir: "output/depth"                  # Estimated depth maps / 估计深度图目录
+  mask_dir: "output/masks"                   # Optional foreground masks / 可选前景遮罩
+  resolution: [1280, 720]                    # [width, height] after resize
+  num_frames: 200                            # Number of training frames
+  train_split: 0.9                           # Train / val split ratio
+  white_background: false                    # Use white BG instead of black
+
+# --- Depth Estimation / 深度估计 ---
+depth:
+  model: "depth-anything-v2"                 # Model: depth-anything-v2 | metric3d | zoe
+  checkpoint: "vitl"                         # Size variant: vits | vitb | vitl | vitg
+  device: "cuda"
+  max_depth: 80.0                            # Max depth in meters (sports field scale)
+
+# --- Camera / 相机 ---
+camera:
+  model: "pinhole"                           # Pinhole camera model / 针孔相机模型
+  fx: 1200.0                                 # Focal length x (pixels, estimate if unknown)
+  fy: 1200.0                                 # Focal length y
+  cx: 640.0                                  # Principal point x
+  cy: 360.0                                  # Principal point y
+  estimate_focal: true                       # Auto-estimate from video metadata
+
+# --- 3D Gaussian Model / 三维高斯模型 ---
+gaussian:
+  num_init: 50000                            # Initial number of Gaussians / 初始高斯数量
+  position_lr: 0.00016                       # Learning rate: positions
+  feature_lr: 0.0025                         # Learning rate: SH features
+  opacity_lr: 0.05                           # Learning rate: opacity
+  scaling_lr: 0.005                          # Learning rate: scales
+  rotation_lr: 0.001                         # Learning rate: rotations
+  percent_dense: 0.01                        # Percent of scene extent for densification
+  sh_degree: 3                               # Spherical harmonics degree (0-4)
+
+# --- Training / 训练 ---
+train:
+  iterations: 30000                          # Total training steps / 总训练步数
+  batch_size: 1                              # One image per iteration (3DGS default)
+  densify_interval: 100                      # Densify every N steps / 每N步进行密度控制
+  densify_until: 15000                       # Stop densification after this step
+  opacity_reset_interval: 3000               # Reset opacity every N steps
+  save_interval: 5000                        # Save checkpoint every N steps
+  eval_interval: 1000                        # Evaluate on val set every N steps
+  position_lr_max_steps: 30000               # Max steps for positional LR scheduler
+
+# --- Loss / 损失函数 ---
+loss:
+  lambda_l1: 0.8                             # Weight for L1 loss
+  lambda_ssim: 0.2                           # Weight for SSIM term
+
+# --- Optimization / 优化器 ---
+optim:
+  optimizer: "adam"                          # adam | sgd
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_eps: 1.0e-15
+
+# --- Logging / 日志 ---
+logging:
+  log_dir: "output/logs"
+  wandb_project: "sports3d-gs"              # wandb project name (empty to disable)
+  print_interval: 50                         # Console log every N steps
+
+# --- Rendering / 渲染 ---
+render:
+  tile_size: 16                              # Rasterization tile size
+  near_clip: 0.01
+  far_clip: 100.0
+  fov: 60.0                                  # Field of view for novel views

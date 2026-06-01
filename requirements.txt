@@ -1,0 +1,50 @@
+# ============================================================
+# Sports3D-GS Dependencies / 依赖列表
+# ============================================================
+# Install with: pip install -r requirements.txt
+# Recommended: use Conda environment (see docs/INSTALL.md)
+# ============================================================
+
+# --- Core Deep Learning / 核心深度学习 ---
+torch>=2.1.0
+torchvision>=0.16.0
+
+# --- Computer Vision / 计算机视觉 ---
+opencv-python>=4.8.0
+opencv-contrib-python>=4.8.0
+imageio>=2.31.0
+pillow>=10.0.0
+scikit-image>=0.22.0
+
+# --- Scientific Computing / 科学计算 ---
+numpy>=1.24.0
+scipy>=1.11.0
+einops>=0.7.0
+
+# --- 3D Processing / 三维处理 ---
+open3d>=0.18.0
+plyfile>=1.0.0
+trimesh>=4.0.0
+
+# --- Monocular Depth Estimation / 单目深度估计 ---
+transformers>=4.36.0
+huggingface-hub>=0.20.0
+timm>=0.9.0
+
+# --- Loss Functions & Metrics / 损失函数与评估 ---
+lpips>=0.1.4
+pytorch-msssim>=1.0.0
+
+# --- Logging & Visualization / 日志与可视化 ---
+tensorboard>=2.15.0
+matplotlib>=3.8.0
+wandb>=0.16.0
+
+# --- Configuration / 配置管理 ---
+pyyaml>=6.0
+omegaconf>=2.3.0
+
+# --- Utilities / 工具 ---
+tqdm>=4.66.0
+rich>=13.0.0
+colorama>=0.4.6

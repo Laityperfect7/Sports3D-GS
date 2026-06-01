@@ -1,0 +1,46 @@
+# Basketball-specific configuration / 篮球场景配置
+# Free-throw / three-point shot scenario / 罚球/三分球场景
+
+dataset:
+  name: "basketball"
+  video_path: "demo/basketball_shot.mp4"
+  frame_dir: "output/basketball/frames"
+  depth_dir: "output/basketball/depth"
+  resolution: [1280, 720]
+  num_frames: 150
+  train_split: 0.9
+  white_background: false
+
+depth:
+  model: "depth-anything-v2"
+  checkpoint: "vitl"
+  device: "cuda"
+  max_depth: 50.0   # Basketball court is ~28m / 篮球场约 28 米
+
+camera:
+  fx: 1100.0        # Estimated from basketball footage / 从篮球录像估计
+  fy: 1100.0
+  cx: 640.0
+  cy: 360.0
+  estimate_focal: true
+
+gaussian:
+  num_init: 40000   # Fewer Gaussians for simpler scene / 较简单场景用较少高斯
+  sh_degree: 3
+  percent_dense: 0.01
+
+train:
+  iterations: 25000
+  densify_until: 12000
+  opacity_reset_interval: 3000
+  save_interval: 5000
+  eval_interval: 1000
+
+loss:
+  lambda_l1: 0.8
+  lambda_ssim: 0.2
+
+render:
+  near_clip: 0.01
+  far_clip: 80.0
+  fov: 55.0
