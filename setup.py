@@ -29,7 +29,7 @@ setup(
     description="3D Gaussian Splatting for Single-View Sports Video Reconstruction",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/YOUR_USERNAME/Sports3D-GS",
+    url="https://gitee.com/GM0531/GMing260601",
     packages=find_packages(include=["gaussian_splatting", "gaussian_splatting.*"]),
     python_requires=">=3.10",
     install_requires=requirements,

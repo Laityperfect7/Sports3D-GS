@@ -101,7 +101,7 @@ Clean, documented Python codebase. Swap the depth model, add pose tracking, inte
 
 ```bash
 # Clone the repo / 克隆仓库
-git clone https://github.com/YOUR_USERNAME/Sports3D-GS.git
+git clone https://gitee.com/GM0531/GMing260601.git
 cd Sports3D-GS
 
 # Create conda environment (recommended) / 创建 conda 环境（推荐）
