@@ -3,16 +3,21 @@
 <!-- Banner Placeholder / 横幅占位符 -->
 <img src="docs/images/banner.png" alt="Sports3D-GS Banner" width="800"/>
 
-# ⚽ Sports3D-GS: 3D Sports Reconstruction from a Single Video
+# ⚽ Sports3D-GS: Single-View 3D Sports Reconstruction
 
-### *Turn any sports clip into an explorable 3D scene.*
+### *One Video → One Explorable 3D Scene*
+
+<p align="center">
+  <strong>Reconstruct high-fidelity 3D sports scenes from a single monocular video using 3D Gaussian Splatting.</strong><br>
+  Basketball, tennis, soccer — drop in any sports clip and get back a fly-through-ready 3D reconstruction.
+</p>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![CUDA 11.6+](https://img.shields.io/badge/CUDA-11.6+-76b900.svg)](https://developer.nvidia.com/cuda-toolkit)
 [![Paper](https://img.shields.io/badge/Paper-3DGS-red.svg)](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/)
 
-**English** | [中文](#中文)
+**English** | [中文](#中文说明)
 
 </div>
 
